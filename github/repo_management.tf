@@ -1,3 +1,11 @@
+variable "github_token" {
+  description = "Your Github access token"
+}
+
+variable "github_owner" {
+  description = "Your Github owner name"
+}
+
 provider "github" {
   token = "${var.github_token}"
   owner = "${var.github_owner}"
