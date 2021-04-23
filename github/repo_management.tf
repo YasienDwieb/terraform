@@ -13,12 +13,6 @@ provider "github" {
 
 resource "github_repository" "tf_managed_repo" {
   name        = "Terraform Managed Repo"
-  description = "This repo is totally managed by terraform"
-
+  description = "This repo is totally managed by Terraform"
   visibility = "public"
-
-  template {
-    owner      = "github"
-    repository = "terraform-module-template"
-  }
 }
