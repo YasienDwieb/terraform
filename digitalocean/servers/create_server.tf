@@ -10,6 +10,7 @@ terraform {
 # Set the variable value in *.tfvars file
 # or using -var="do_token=..." CLI option
 variable "do_token" {}
+variable "ssh_key_fingerprint" {}
 
 # Configure the DigitalOcean Provider
 provider "digitalocean" {
@@ -21,4 +22,11 @@ resource "digitalocean_droplet" "web" {
   name   = "web-1"
   region = "fra1"
   size   = "s-1vcpu-1gb"
+  ssh_keys = [
+      "${var.ssh_key_fingerprint}"
+    ]
+}
+
+output "server_address" {
+  value = "${digitalocean_droplet.web.ipv4_address}"
 }
